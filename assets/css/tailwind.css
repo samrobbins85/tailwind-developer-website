@@ -1,5 +1,45 @@
 @tailwind base;
+
 @tailwind components;
+
+.avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100px;
+  height: 100px;
+
+  border-radius: 10%;
+  overflow: hidden;
+
+  /* Subtle inner border */
+  box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.015);
+}
+
+.avatar img {
+  height: 70%;
+  width: 70%;
+  z-index: 2;
+
+  /* Optionally add a drop shadow to the main image	 */
+  /* to make it feel "lifted"	 */
+}
+
+.background {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: scale(2);
+  filter: blur(10px) opacity(0.9);
+}
+
 @tailwind utilities;
 @import url("https://rsms.me/inter/inter.css");
 html {
