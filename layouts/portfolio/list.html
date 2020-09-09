@@ -1,57 +1,20 @@
-{{ define "main" }} {{ partial "page-title.html" . }}
+{{ define "main" }}
+  <section class="pt-20">
+    <h1 class="text-center text-4xl font-semibold">Porfolio</h1>
+  </section>
 
-<section>
-  <div class="uk-container uk-margin-xlarge-bottom">
-    <div uk-filter="target: .js-filter">
-      <ul class="uk-subnav uk-subnav-pill uk-subnav-divider">
-        <li uk-filter-control><a href="#">All</a></li>
-        {{ range .Site.Data.portfolio.filter }}
-
-        <li uk-filter-control="[data-tags*='{{ .value }}']">
-          <a href="#">{{ .label }}</a>
-        </li>
-
-        {{ end }}
-
-      </ul>
-
-      <ul
-        class="js-filter uk-child-width-1-1 uk-child-width-1-4@m uk-text-center"
-        uk-grid
-        uk-height-match="target: > li > div > .fixy"
-      >
-        {{ range .Data.Pages }}
-
-        <li data-tags="{{ delimit .Params.categories  ' ' }}">
-          <div class="uk-card uk-card-default" style="position: relative;">
-            <div class="fixy">
-              <div class="uk-card-media-top">
-                <img
-                  class="contain experience"
-                  src="{{ .Params.Image | absURL }}"
-                  alt=""
-                />
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">{{ .Title }}</h3>
-                <p>{{ .Params.Description }}</p>
-              </div>
-            </div>
-
-            <div class="uk-card-footer">
-              <a
-                href="{{ .Permalink| relURL }}"
-                class="uk-button uk-button-text"
-                >Read more</a
-              >
-            </div>
-          </div>
-        </li>
-        {{ end }}
-
-      </ul>
-    </div>
+  <div class="flex flex-wrap container gap-8 mx-auto justify-center py-4">
+    {{ range .Data.Pages }}
+      <div class="w-1/5 border border-gray-300 rounded">
+        <img class="h-32 w-full object-contain p-4" src="{{ .Params.Image }}" />
+        <hr class="my-4" />
+        <div class="px-4">
+          <h2 class="font-semibold h-16">
+            {{ .Title }}
+          </h2>
+          <p class="text-gray-600 pb-4">{{ .Params.Description }}</p>
+        </div>
+      </div>
+    {{ end }}
   </div>
-</section>
-
 {{ end }}
