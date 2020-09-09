@@ -1,20 +1,48 @@
 {{ define "main" }}
+  <script
+    src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js"
+    defer
+  ></script>
   <section class="pt-20">
-    <h1 class="text-center text-4xl font-semibold">Porfolio</h1>
+    <h1 class="text-center text-4xl font-semibold">Portfolio</h1>
   </section>
 
-  <div class="flex flex-wrap container gap-8 mx-auto justify-center py-4">
-    {{ range .Data.Pages }}
-      <div class="w-1/5 border border-gray-300 rounded">
-        <img class="h-32 w-full object-contain p-4" src="{{ .Params.Image }}" />
-        <hr class="my-4" />
-        <div class="px-4">
-          <h2 class="font-semibold h-16">
-            {{ .Title }}
-          </h2>
-          <p class="text-gray-600 pb-4">{{ .Params.Description }}</p>
-        </div>
-      </div>
-    {{ end }}
+  <div x-data="{ tab: 'all' }">
+    <div class="flex justify-center flex-wrap gap-5 text-gray-500">
+      <button :class="{ 'text-gray-800': tab === 'all' }" @click="tab = 'all'">
+        All
+      </button>
+      {{ range .Site.Data.portfolio.filter }}
+        <button
+          :class="{ 'text-gray-800': tab === '{{ .value }}' }"
+          @click="tab = '{{ .value }}'"
+        >
+          {{ .label }}
+        </button>
+      {{ end }}
+    </div>
+    <div
+      class="flex flex-wrap container gap-8 mx-auto justify-center py-4 px-4"
+    >
+      {{ range .Data.Pages }}
+        <a
+          href="{{ .Permalink | relURL }}"
+          class="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg"
+          x-show="[{{ range .Params.categories }}'{{ . | urlize }}',{{ end }} 'all'].includes(tab)"
+        >
+          <img
+            class="h-32 w-full object-contain p-4"
+            src="{{ .Params.Image }}"
+          />
+          <hr class="my-4" />
+          <div class="px-4">
+            <h2 class="font-semibold h-16">
+              {{ .Title }}
+            </h2>
+            <p class="text-gray-600 pb-4">{{ .Params.Description }}</p>
+          </div>
+        </a>
+      {{ end }}
+    </div>
   </div>
 {{ end }}
