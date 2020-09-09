@@ -1,5 +1,8 @@
 {{ define "main" }}
-  <section class="pt-20 text-center text-4xl font-semibold pb-10">
+  {{ "<!-- Hexagon Stylesheet -->" | safeHTML }}
+  {{ $hexagons := resources.Get "css/hexagon.css" | minify }}
+  <link rel="stylesheet" href="{{ $hexagons.Permalink | relURL }}" />
+  <section class="pt-20 text-center text-5xl font-semibold pb-10">
     About
   </section>
 
@@ -17,6 +20,64 @@
               <h3 class="text-xl font-semibold">{{ .title }}</h3>
               <p class="text-gray-600">{{ .company }}</p>
               <p class="text-gray-600 pt-4">{{ .duration }}</p>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+
+  {{ if .Site.Data.about.hackathons.enable }}
+    <section class="pt-10">
+      <h2 class="text-center text-3xl">Hackathons</h2>
+      <div class="container text-center mx-auto pt-10">
+        <ul id="hexGrid">
+          {{ range .Site.Data.about.hackathons.item }}
+            <li class="hex">
+              <div class="hexIn">
+                <div class="hexLink">
+                  <img src="{{ .image }}" alt="{{ .title }}" loading="lazy" />
+                  {{ if eq .url "none" }}
+                    <div style="all:unset">
+                      <h1>{{ .title }}</h1>
+                    </div>
+                    {{ else }}
+                    <a href="{{ .url }}" style="all:unset" class="text">
+                      <h1>{{ .title }}</h1>
+                    </a>
+                  {{ end }}
+                  {{ if eq .url "none" }}
+                    <div style="all:unset">
+                      <p>{{ .description }}</p>
+                    </div>
+                    {{ else }}
+                    <a href="{{ .url }}" style="all:unset" class="text">
+                      <p>{{ .description }}</p>
+                    </a>
+                  {{ end }}
+                </div>
+              </div>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </section>
+  {{ end }}
+
+  {{ if .Site.Data.about.education.enable }}
+    <section class="py-10">
+      <h2 class="text-center text-3xl">Education</h2>
+      <div class="flex flex-wrap justify-center gap-6 pt-6">
+        {{ range .Site.Data.about.education.item }}
+          <div class="border border-gray-300 w-64 rounded">
+            <img
+              class="h-40 w-40 object-contain mx-auto my-6"
+              src="{{ .image }}"
+            />
+            <div class="pl-4 pb-4">
+              <h3 class="text-xl font-semibold h-16">{{ .institution }}</h3>
+              <p class="text-gray-600">{{ .title }}</p>
+              <p class="text-gray-600 pt-4">{{ .year }}</p>
             </div>
           </div>
         {{ end }}

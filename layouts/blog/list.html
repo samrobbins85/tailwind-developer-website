@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <section class="pt-20">
+    <h1 class="text-center text-5xl font-semibold pb-6">Blog</h1>
+    <hr class="mx-10" />
+  </section>
+  <section>
+    <div class="grid container mx-auto gap-2 pt-4">
+      {{ range .Data.Pages.ByPublishDate.Reverse }}
+        <div class="p-4">
+          <div>
+            <a href="{{ .Permalink | relURL }}"
+              ><h2 class="font-semibold text-xl text-blue-700">
+                {{ .Title }}
+              </h2></a
+            >
+            <time class="text-gray-600 text-sm uppercase" datetime="{{ .Date }}"
+              >{{ .Date.Format "Jan 2, 2006" }}</time
+            >
+            <p>{{ .Params.description }}</p>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
