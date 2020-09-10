@@ -114,5 +114,25 @@
         </div>
       </section>
     {{ end }}
+
+  {{if .Site.Data.about.skills.enable}}
+  <section class="py-10">
+    <h2 class="text-4xl">Skills</h2>
+    <h3 class="text-gray-700 text-2xl">These are the tools I love to use</h3>
+    <div class="flex flex-wrap gap-16 justify-center pt-10 px-6">
+      {{range .Site.Data.about.skills.item}}
+        <a href="{{.url}}"><img src={{.image}} alt={{.name}} class="h-20 w-48 object-contain"></a>
+      {{end}}
+  
+    </div>
+    <div class="text-gray-800 text-center text-lg pt-6 divide-y-8 divide-transparent">
+      <p>and many more...</p>
+      <p>You can see me using these on my <a class="text-blue-600 hover:underline" href="/portfolio">portfolio page</a></p>
+    </div>
+  </section>
+  {{end}}
+
+
+
   </div>
 {{ end }}
