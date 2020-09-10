@@ -1,57 +1,12 @@
 <nav
-  class="fixed h-16 p-4 bg-white border-b border-gray-200 w-full z-20 flex justify-between"
+  class="fixed h-16 p-4 bg-white border-b border-gray-200 w-full z-20"
 >
-  <div class="flex">
-
-
-  <div class="flex gap-4 pr-6 text-lg items-center text-gray-700">
-    {{ if .IsHome }}
-
-    <p class="font-semibold">
-      <a
-        style="font-size: 16px; text-transform: none"
-        href="{{ .Site.BaseURL }}"
-        >{{ with .Site.Params.Home }} {{ . }} {{ end }}</a
-      >
-    </p>
-    {{ else }}
-
-    <p>
-      <a style="font-size: 16px; text-transform: none" href="/"
-        >{{ with .Site.Params.Home }} {{ . }}
- {{ end }}</a
-      >
-    </p>
-
+  <div class="flex gap-4 pr-6 text-lg items-center text-gray-700 ">
+ {{ $currentPage := . }}
+    <a href="/" class="{{if .IsHome}}text-gray-800 font-semibold{{else}}font-normal{{end}}" >Home</a>
+    {{ range .Site.Menus.main }}
+    <a class="{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} text-gray-800 font-semibold{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
     {{ end }}
- {{ range .Site.Menus.main }}
- {{ $aURL := .URL | relLangURL }}
-
-    {{ $page := $.Page.Permalink | relLangURL }}
- {{ $aURL2 := split $aURL "/" }}
-
-    {{ $page2 := split $page "/" }}
- {{ $aURL3 := index $aURL2 1 }}
-
-    {{ $page3 := index $page2 1 }}
- {{ if eq $aURL3 $page3 }}
-
-    <p class="font-semibold">
-      <a style="font-size: 16px; text-transform:none" href="{{ .URL | relURL }}"
-        >{{ .Name }}</a
-      >
-    </p>
-    {{ else }}
-
-    <p>
-      <a
-        style="font-size: 16px; text-transform: none"
-        href="{{ .URL | relURL }}"
-        >{{ .Name }}</a
-      >
-    </p>
-    {{ end }}
- {{ end }}
 
   </div>
 </nav>

@@ -1,87 +1,4 @@
 {{ define "main" }}
-
-<!--  {{ partial "page-title.html" . }}-->
-<!-- <style>
-  p {
-    margin: 0
-  }
-
-  .people-wrap {
-    display: inline-flex;
-    margin-top: 10px;
-  }
-
-  .people-image {
-    display: block;
-    border-radius: 50%;
-    /* remove gap*/
-  }
-
-  .people {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .name {
-    margin: auto;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: #000;
-    font-family: Roboto, sans-serif;
-    line-height: 1.2;
-    margin-top: 2rem;
-  }
-
-  .content img {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom:30px;
-  }
-
-  p { margin-bottom: 1em; }
-
-  body p:last-child { margin-bottom: 0em; }
-
-  img.skills{
-    height: 80px;
-  }
-
-  @media only screen and (min-width: 960px) {
-    .content img{max-width:60vw; max-height:60vh}
-
-  .content img{
-      max-width:60vw;
-      max-height:60vh
-  }
-  }
-  .content{
-      width: 90vw;
-      max-width: 1200px
-  }
-
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-
-</style> -->
-
-
 <section class="pt-20 px-4">
   <div class="container mx-auto">
     <h1 class="text-4xl text-center font-semibold">{{.Title}}</h1>
@@ -94,9 +11,12 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg> {{ math.Round (div (countwords .Content) 220.0) }} minutes</p>
     </div>
-    {{if isset .Params "coders"}}
+
+    <!-- Start of website/github etc -->
 
     <div class="flex justify-center gap-x-40 gap-y-4 flex-wrap">
+          {{if isset .Params "coders"}}
+
       {{if ( gt (len .Params.coders ) 0)}}
       <div class="border border-gray-500 px-4 py-2 group relative w-48 text-center">
         <button type="button">
@@ -114,7 +34,9 @@
 
         </div>
       </div>
+          {{end}}
       {{end}}
+    
 
     {{if isset .Params "site"}}
     {{if ne .Params.site ""}}
@@ -128,9 +50,11 @@
     {{end}}
 
 
+    {{if isset .Params "github"}}
 
-      <div class="border border-gray-500 px-4 py-2 w-32 group">
         {{if ( gt (len .Params.github ) 1)}}
+              <div class="border border-gray-500 px-4 py-2 w-32 group">
+
         <div>
           <button class="relative" type="button"> <img src="https://unpkg.com/simple-icons@v3/icons/github.svg" class="inline-block h-6 w-6 mr-2" /> GitHub</button> 
           <div class="absolute bg-white border border-gray-400 hidden group-hover:block left-0 right-0 w-64" style=" left: 50%; transform: translate(-50%, 0%); ">
@@ -142,13 +66,19 @@
 
           </div>
         </div>
+              </div>
         {{else if ( gt (len .Params.github ) 0)}}
+                      <div class="border border-gray-500 px-4 py-2 w-32 ">
+
         <a  href="{{index (.Params.github) 0}}"> 
          <img src="https://unpkg.com/simple-icons@v3/icons/github.svg" class="inline-block h-6 w-6 mr-2" /> Github</a>
+         </div>
         {{end}}
-      </div>
+{{end}}
+     
     </div>
-    {{end}}
+    <!-- End of website/github etc -->
+
 
     <hr class="my-4">
     {{if isset .Params "tech"}}
