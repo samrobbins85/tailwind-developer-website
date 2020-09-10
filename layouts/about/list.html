@@ -2,86 +2,117 @@
   {{ "<!-- Hexagon Stylesheet -->" | safeHTML }}
   {{ $hexagons := resources.Get "css/hexagon.css" | minify }}
   <link rel="stylesheet" href="{{ $hexagons.Permalink | relURL }}" />
-  <section class="pt-20 text-center text-5xl font-semibold pb-10">
-    About
-  </section>
-
-  {{ if .Site.Data.about.experience.enable }}
-    <section>
-      <h2 class="text-center text-3xl">Experience</h2>
-      <div class="flex flex-wrap justify-center gap-6 pt-6">
-        {{ range .Site.Data.about.experience.item }}
-          <div class="border border-gray-300 w-64 rounded">
-            <img
-              class="h-40 w-40 object-contain mx-auto my-6"
-              src="{{ .logo }}"
-            />
-            <div class="pl-4 pb-4">
-              <h3 class="text-xl font-semibold">{{ .title }}</h3>
-              <p class="text-gray-600">{{ .company }}</p>
-              <p class="text-gray-600 pt-4">{{ .duration }}</p>
-            </div>
-          </div>
-        {{ end }}
-      </div>
+  <div class="container mx-auto px-4">
+    <section class="pt-20 text-5xl font-semibold pb-4">
+      About
     </section>
-  {{ end }}
-
-  {{ if .Site.Data.about.hackathons.enable }}
-    <section class="pt-10">
-      <h2 class="text-center text-3xl">Hackathons</h2>
-      <div class="lg:w-1/2 text-center mx-auto pt-10 px-4">
-        <ul id="hexGrid">
-          {{ range .Site.Data.about.hackathons.item }}
-            <li class="hex">
-              <div class="hexIn">
-                <div class="hexLink">
-                  <img src="{{ .image }}" alt="{{ .title }}" loading="lazy" />
-                  {{ if eq .url "none" }}
-                    <div style="all:unset">
-                      <h1>{{ .title }}</h1>
-                    </div>
-                    {{ else }}
-                    <a href="{{ .url }}" style="all:unset" class="text">
-                      <h1>{{ .title }}</h1>
-                    </a>
-                  {{ end }}
-                  {{ if eq .url "none" }}
-                    <div style="all:unset">
-                      <p>{{ .description }}</p>
-                    </div>
-                    {{ else }}
-                    <a href="{{ .url }}" style="all:unset" class="text">
-                      <p>{{ .description }}</p>
-                    </a>
-                  {{ end }}
+  
+    {{ if .Site.Data.about.experience.enable }}
+      <section class="pb-12 ">
+        <h2 class="text-4xl pb-10">Experience</h2>
+        <div class="flex justify-center">
+          <div class="xl:w-1/2 flex flex-col gap-10">
+            {{ range .Site.Data.about.experience.item }}
+              <div class="grid grid-cols-12 mx-4">
+                <div class="col-span-3 flex items-center">
+                  <div
+                    class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center {{ .background }} border-none"
+                  >
+                    <img
+                      class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
+                      src="{{ .logo }}"
+                    />
+                  </div>
+                </div>
+                <div class="col-span-5 sm:col-span-6 flex items-center">
+                  <div>
+                    <div class="font-medium text-xl">{{ .title }}</div>
+                    <div class="text-gray-700 uppercase text-sm tracking-wider font-medium">{{ .company }}</div>
+                  </div>
+                </div>
+                <div
+                  class="col-span-4 sm:col-span-3 border-l border-gray-400 pl-4 flex items-center my-4"
+                >
+                  {{ .duration }}
                 </div>
               </div>
-            </li>
-          {{ end }}
-        </ul>
-      </div>
-    </section>
-  {{ end }}
-
-  {{ if .Site.Data.about.education.enable }}
-    <section class="py-10">
-      <h2 class="text-center text-3xl">Education</h2>
-      <div class="flex flex-wrap justify-center gap-6 pt-6">
-        {{ range .Site.Data.about.education.item }}
-          <div class="border border-gray-300 w-64 rounded">
-            <img
-              class="h-40 w-40 object-contain mx-auto my-6"
-              src="{{ .image }}"
-            />
-            <div class="pl-4 pb-4">
-              <h3 class="text-xl font-semibold h-16">{{ .institution }}</h3>
-              <p class="text-gray-600">{{ .title }}</p>
-              <p class="text-gray-600 pt-4">{{ .year }}</p>
-            </div>
+            {{ end }}
           </div>
-        {{ end }}
-      </div>
-    </section>
-  {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  
+    {{ if .Site.Data.about.hackathons.enable }}
+      <section class="py-20 ">
+        <h2 class="text-4xl">Hackathons</h2>
+        <div class="lg:w-3/4 text-center mx-auto pt-16 px-4">
+          <ul id="hexGrid">
+            {{ range .Site.Data.about.hackathons.item }}
+              <li class="hex">
+                <div class="hexIn">
+                  <div class="hexLink">
+                    <img src="{{ .image }}" alt="{{ .title }}" loading="lazy" />
+                    {{ if eq .url "none" }}
+                      <div style="all:unset">
+                        <h1>{{ .title }}</h1>
+                      </div>
+                      {{ else }}
+                      <a href="{{ .url }}" style="all:unset" class="text">
+                        <h1>{{ .title }}</h1>
+                      </a>
+                    {{ end }}
+                    {{ if eq .url "none" }}
+                      <div style="all:unset">
+                        <p>{{ .description }}</p>
+                      </div>
+                      {{ else }}
+                      <a href="{{ .url }}" style="all:unset" class="text">
+                        <p>{{ .description }}</p>
+                      </a>
+                    {{ end }}
+                  </div>
+                </div>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      </section>
+    {{ end }}
+  
+    
+    {{ if .Site.Data.about.education.enable }}
+      <section class="py-20">
+        <h2 class="text-4xl pb-10">Education</h2>
+        <div class="flex justify-center">
+          <div class="xl:w-1/2 flex flex-col gap-10">
+            {{ range .Site.Data.about.education.item }}
+              <div class="grid grid-cols-12 mx-4">
+                <div class="col-span-3 flex items-center">
+                  <div
+                    class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center {{ .background }} border-none"
+                  >
+                    <img
+                      class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
+                      src="{{ .image }}"
+                    />
+                  </div>
+                </div>
+                <div class="col-span-5 sm:col-span-6 flex items-center">
+                  <div>
+                    <div class="font-medium text-xl">{{ .title }}</div>
+                    <div class="text-gray-700 uppercase text-sm font-medium tracking-wider">{{ .institution }}</div>
+                  </div>
+                </div>
+                <div
+                  class="col-span-4 sm:col-span-3 border-l border-gray-400 pl-4 flex items-center my-4"
+                >
+                  {{ .duration }}
+                </div>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      </section>
+    {{ end }}
+  </div>
 {{ end }}

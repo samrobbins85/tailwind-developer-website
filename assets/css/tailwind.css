@@ -1,17 +1,10 @@
+@import url("https://rsms.me/inter/inter.css");
+
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
-@import url("https://rsms.me/inter/inter.css");
-html {
-  font-family: "Inter", sans-serif;
-}
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: "Inter var", sans-serif;
-  }
-}
 
 .prose img {
   @apply shadow-lg;
