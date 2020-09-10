@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <!--  {{ partial "page-title.html" . }}-->
-<style>
+<!-- <style>
   p {
     margin: 0
   }
@@ -79,88 +79,90 @@
     padding: 8px;
   }
 
-</style>
+</style> -->
 
 
-<section>
-  <div class="uk-container uk-margin-large-bottom uk-margin-medium-top">
-    <h1 class="uk-text-center uk-heading-medium">{{.Title}}</h1>
-    <p class="uk-text-center uk-text-lead">{{.Params.description}}</p>
-    <p class="uk-text-center">Published on {{ .PublishDate.Format "Jan 02, 2006" }}</p>
-    <p class="uk-text-center">Reading time: {{ math.Round (div (countwords .Content) 220.0) }} minutes.</p>
+<section class="pt-20 px-4">
+  <div class="container mx-auto">
+    <h1 class="text-4xl text-center font-semibold">{{.Title}}</h1>
+    <p class="text-center text-gray-600 text-xl">{{.Params.description}}</p>
+    <div class="py-4 text-gray-600">
+    	<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 inline-block stroke-current text-gray-600">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg> {{ .PublishDate.Format "Jan 02, 2006" }}</p>
+    	<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 inline-block stroke-current text-gray-600">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg> {{ math.Round (div (countwords .Content) 220.0) }} minutes</p>
+    </div>
     {{if isset .Params "coders"}}
 
-    <div class="uk-child-width-1-4@m uk-child-width-1-2@s uk-text-center uk-flex-center uk-grid-large uk-margin-small-top" uk-grid>
+    <div class="flex justify-center gap-x-40 gap-y-4 flex-wrap">
       {{if ( gt (len .Params.coders ) 0)}}
-      <div>
-        <button class="uk-button uk-button-default" type="button"> <span uk-icon="icon: users"></span> Team
+      <div class="border border-gray-500 px-4 py-2 group relative w-48 text-center">
+        <button class="uk-button uk-button-default" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 inline-block stroke-current text-teal-600">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+</svg> Team
           Project</button>
-        <div class="uk-width-auto" uk-dropdown="pos: bottom-center; delay-hide:400">
-          <div class="uk-dropdown-grid uk-child-width-1-2" uk-grid>
-            <div>
-              <ul class="uk-nav uk-dropdown-nav">
+        <div class="absolute bg-white border border-gray-400 mt-2 p-4 w-64 hidden group-hover:block mx-auto left-0 right-0" style=" left: 50%; transform: translate(-50%, 0%); ">
+              <ul class="divide-y-8 divide-transparent">
                 {{ range .Params.coders }}
-                <li><a href="https://github.com/{{.}}"> <img src="https://github.com/{{.}}.png" alt="Smiley face"
-                      width="42" height="42" style="border-radius: 50%"> {{.}}</a></li>
+                <li><a href="https://github.com/{{.}}"> <img src="https://github.com/{{.}}.png" alt="GitHub Avatar"
+                      width="42" height="42" style="border-radius: 50%" class="inline-block"> <span class="text-gray-700">{{.}}</span></a></li>
                 {{end}}
               </ul>
-            </div>
 
-          </div>
         </div>
       </div>
       {{end}}
 
     {{if isset .Params "site"}}
     {{if ne .Params.site ""}}
-      <div>
-        <a class="uk-button uk-button-default" href="{{.Params.site}}"> <span uk-icon="icon: world"></span>
-          Website</a>
+      <div class="border border-gray-500 px-4 py-2 w-32">
+        <a  href="{{.Params.site}}"> <span uk-icon="icon: world"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 inline-block stroke-current text-gray-600">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+</svg>  Website</a>
       </div>
     {{end}}
     {{end}}
 
 
 
-      <div>
+      <div class="border border-gray-500 px-4 py-2 w-32 group">
         {{if ( gt (len .Params.github ) 1)}}
         <div>
-          <button class="uk-button uk-button-default" type="button"> <span uk-icon="icon: github"></span> GitHub</button>
-          <div class="uk-width-auto" uk-dropdown="pos: bottom-center; delay-hide:400">
-            <div class="uk-dropdown-grid uk-child-width-1-2" uk-grid>
-              <div>
-                <ul class="uk-nav uk-dropdown-nav">
+          <button class="relative" type="button"> <img src="https://unpkg.com/simple-icons@v3/icons/github.svg" class="inline-block h-6 w-6 mr-2" /> GitHub</button> 
+          <div class="absolute bg-white border border-gray-400 hidden group-hover:block left-0 right-0 w-64" style=" left: 50%; transform: translate(-50%, 0%); ">
+                <ul class="divide-y-8 divide-transparent p-2">
                   {{ range .Params.github }}
-                  <li><a style="color: #0366d6; font-weight: 600" href="{{.}}"> <span><img loading="lazy" src="https://res.cloudinary.com/samrobbins/image/upload/v1593092912/repo_ec3slk.svg"></span>  {{index (last 1 (split . "/")) 0}}</a></li>
+                  <li><a style="color: #0366d6; font-weight: 600" href="{{.}}"> <span><img class="inline-block" loading="lazy" src="https://res.cloudinary.com/samrobbins/image/upload/v1593092912/repo_ec3slk.svg"></span>  {{index (last 1 (split . "/")) 0}}</a></li>
                   {{end}}
                 </ul>
-              </div>
 
-            </div>
           </div>
         </div>
         {{else if ( gt (len .Params.github ) 0)}}
-        <a class="uk-button uk-button-default" href="{{index (.Params.github) 0}}"> <span uk-icon="icon: github"></span>
-          Github</a>
+        <a  href="{{index (.Params.github) 0}}"> 
+         <img src="https://unpkg.com/simple-icons@v3/icons/github.svg" class="inline-block h-6 w-6 mr-2" /> Github</a>
         {{end}}
       </div>
     </div>
     {{end}}
 
-    <hr class="full-width">
+    <hr class="my-4">
     {{if isset .Params "tech"}}
     {{if (gt (len .Params.tech) 0)}}
-    <h2 class="uk-text-center uk-heading-small">Built with</h2>
+    <h2 class="text-center text-3xl">Built with</h2>
 
-    <section >
-      <div class="uk-container">
+    <section class="py-6 px-2">
+      <div class="container">
 
-        <div class="uk-child-width-1-6@l uk-child-width-1-3@m uk-child-width-1-3@s uk-child-width-1-2 uk-text-center uk-flex-center"
-             uk-grid>
+        <div class="flex justify-around flex-wrap">
           {{ range .Params.tech }}
-          <div class="imagemargin">
+          <div>
             <a href="{{.url}}">
-            <img class="contain skills" src="{{.logo}}" alt="{{.name}}" loading="lazy" style="cursor: pointer">
+            <img class="h-20 w-32 object-contain" src="{{.logo}}" alt="{{.name}}" loading="lazy" style="cursor: pointer">
             </a>
           </div>
           {{ end }}
@@ -174,12 +176,14 @@
     {{end}}
     {{end}}
 
-    <div class="content">
-      {{.Content }}
-    </div>
+    
   </div>
+  
   </div>
+  
 </section>
-
+<div class="container prose mx-auto w-screen px-4">
+      {{.Content }}
+</div>
 
 {{end}}

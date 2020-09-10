@@ -12,3 +12,7 @@ html {
     font-family: "Inter var", sans-serif;
   }
 }
+
+.prose img {
+  @apply shadow-lg;
+}
