@@ -75,15 +75,6 @@ author = "Sam Robbins"
 
 This file is stored in `data/homepage.yml`. It determines the content of the homepage and contains many sections
 
-#### banner
-
-This is the text in the hero section, change it to whatever you want
-
-```yml
-banner:
-  title: Hi! I’m Sam
-```
-
 #### social
 
 Put all of your social links here and they will appear in the social section
@@ -99,62 +90,77 @@ social:
   gmail: samrobbinsgb
 ```
 
-#### about
-
-- `enable` can be used to hide this section
-- `content` determines what text is shown here
-- `btnText` changes the text on the button
-- `URL` changes the URL the button directs to
-
-```yml
-about:
-  enable: true
-  content: 2nd Year Durham Computer Science Student
-  button:
-    btnText: Find out more
-    URL: "/about"
-```
-
-#### skill
-
-- `enable` can be used to hide this section
-- `title` determines the text both under the image and in the modal
-- `logo` determines the image that shows up
-- `description` is the text that appears inside the modal
-
-```yml
-skill:
-  enable: true
-  item:
-    - title: JavaScript
-      logo: https://res.cloudinary.com/samrobbins/image/upload/v1591793272/logos/logos_javascript_adj1dx.svg
-      description: Details coming soon, contact me if you want to know more
-```
-
 #### portfolio
 
 This is used to highlight specific portfolio projects you want to show
 
 - `enable` can be used to hide this section
 - `title` is the text at the top each item
+- `company` to show who you did the work for
+- `date` displays under the title
 - `image` is the image for each item
-- `description` goes underneath the image for each item
+- `description` for a short description of the project
 - `link` directs to the main portfolio page
-- `tools` indicates what technologies you used, it uses the icons from https://simpleicons.org/
+- `tools` indicates what technologies you used
 
 ```yml
 portfolio:
   enable: true
   item:
-    - title: Easy DMARC
-      image: https://res.cloudinary.com/samrobbins/image/upload/v1597159067/Easy_DMARC_hkcgif.webp
-      description: A website to make it easy to add DMARC to a Vercel website
-      link: "/portfolio/easy-dmarc"
+    - title: DNS Comparison Website
+      company: Global Cyber Alliance
+      date: 2020
+      image: https://res.cloudinary.com/samrobbins/image/upload/q_auto/v1599472461/homepage_urjka3.png
+      description: A website to compare the performance of major DNS providers when it comes to blocking criminal domains
+      link: "/portfolio/dns-comparison-website/"
       tools:
-        - next-dot-js
-        - tailwindcss
-        - vercel
-        - react
+        - https://cdn.svgporn.com/logos/nextjs.svg
+        - https://cdn.svgporn.com/logos/tailwindcss-icon.svg
+```
+
+#### Achievements
+
+This allows you to list your achievements in the following format
+
+The colour for `background` is
+
+```yml
+achievements:
+  enable: true
+  item:
+    - title: Auth0 Hackathon
+      description: 3rd Place Security
+      date: July 2020
+      image: https://res.cloudinary.com/samrobbins/image/upload/q_auto/v1591793268/logos/logos_auth0_ruvdmp.svg
+      background: bg-orange-100
+```
+
+#### education
+
+This section allows you to showcase your education history, the fields are self explanatory.
+
+```yml
+education:
+  enable: true
+  item:
+    - title: BSc Computer Science
+      year: 2018 - Present
+      academy: Durham University
+      image: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793268/logos/logos_Durham_fc2sae.svg
+```
+
+### `about.yml`
+
+This file configures the about page, and follows the format below:
+
+```yml
+leadership:
+  enable: true
+  item:
+    - logo: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793280/logos/logos_yl_qozav6.webp
+      title: Young Leader
+      company: The Scout Association
+      duration: September 2014 - July 2018
 ```
 
 #### experience
@@ -187,60 +193,6 @@ hackathons:
       description: Climate change simulator
       image: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793405/stickers/Hack_Cambridge_101_ozoq5d.png
       url: none
-```
-
-#### certifications
-
-This allows you to list your certifications in the following format
-
-```yml
-certifications:
-  enable: true
-  item:
-    - title: Microsoft Azure Fundamentals
-      image: https://res.cloudinary.com/samrobbins/image/upload/v1592501459/microsoft-certified-fundamentals-badge_cpcgyn.svg
-      url: https://www.youracclaim.com/badges/b4cf7a86-eb83-478e-bfd0-9f427c3474a0/public_url
-```
-
-#### Awards and Achievements
-
-This allows you to list your awards and achievements in the following format
-
-```yml
-awards:
-  enable: true
-  item:
-    - title: Phase 1 Winner
-      event: GNOME Community Engagement Challenge
-      image: https://res.cloudinary.com/samrobbins/image/upload/v1595701167/CEChallenge-P1Winner2_iyjvyu.png
-```
-
-#### education
-
-This section allows you to showcase your education history, the fields are self explanatory.
-
-```yml
-education:
-  enable: true
-  item:
-    - title: BSc Computer Science
-      year: 2018 - Present
-      academy: Durham University
-      image: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793268/logos/logos_Durham_fc2sae.svg
-```
-
-### `about.yml`
-
-This file configures the about page, and follows the format below:
-
-```yml
-leadership:
-  enable: true
-  item:
-    - logo: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793280/logos/logos_yl_qozav6.webp
-      title: Young Leader
-      company: The Scout Association
-      duration: September 2014 - July 2018
 ```
 
 ### `porfolio.yml`
