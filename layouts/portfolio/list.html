@@ -8,7 +8,7 @@
   </section>
 
   <div x-data="{ tab: 'all' }">
-    <div class="flex justify-center flex-wrap gap-5 text-gray-500 py-4 px-2">
+    <div class="flex justify-center flex-wrap text-gray-500 py-4 px-2" style="--column-gap: 2rem; --row-gap: 2rem">
       <button
         :class="{ 'text-teal-600': tab === 'all' }"
         @click="tab = 'all'"
@@ -27,7 +27,7 @@
       {{ end }}
     </div>
     <div
-      class="flex flex-wrap container gap-8 mx-auto justify-center py-4 px-4"
+      class="flex flex-wrap container mx-auto justify-center py-4 px-4" style="--row-gap: 2rem; --column-gap:2rem"
     >
       {{ range .Data.Pages }}
         <a

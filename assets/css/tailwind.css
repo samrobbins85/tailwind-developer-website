@@ -9,3 +9,7 @@
 .prose img {
   @apply shadow-lg;
 }
+
+.flex > * {
+  margin: calc(var(--row-gap) / 2) calc(var(--column-gap) / 2);
+}

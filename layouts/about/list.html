@@ -119,7 +119,7 @@
   <section class="py-10">
     <h2 class="text-4xl">Skills</h2>
     <h3 class="text-gray-700 text-2xl">These are the tools I love to use</h3>
-    <div class="flex flex-wrap gap-16 justify-center pt-10 px-6">
+    <div class="flex flex-wrap justify-center pt-10 px-6 content-center" style="--column-gap: 4rem; --row-gap: 4rem">
       {{range .Site.Data.about.skills.item}}
         <a href="{{.url}}"><img src={{.image}} alt={{.name}} class="h-20 w-48 object-contain"></a>
       {{end}}
