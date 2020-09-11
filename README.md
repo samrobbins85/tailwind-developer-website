@@ -122,7 +122,7 @@ portfolio:
 
 This allows you to list your achievements in the following format
 
-The colour for `background` is
+The colour for `background` is based on the [Tailwind CSS](https://tailwindcss.com/) colours, you can read more about them [here](https://tailwindcss.com/docs/customizing-colors)
 
 ```yml
 achievements:
@@ -135,50 +135,26 @@ achievements:
       background: bg-orange-100
 ```
 
-#### education
-
-This section allows you to showcase your education history, the fields are self explanatory.
-
-```yml
-education:
-  enable: true
-  item:
-    - title: BSc Computer Science
-      year: 2018 - Present
-      academy: Durham University
-      image: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793268/logos/logos_Durham_fc2sae.svg
-```
-
 ### `about.yml`
-
-This file configures the about page, and follows the format below:
-
-```yml
-leadership:
-  enable: true
-  item:
-    - logo: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793280/logos/logos_yl_qozav6.webp
-      title: Young Leader
-      company: The Scout Association
-      duration: September 2014 - July 2018
-```
 
 #### experience
 
 - `enable` can be used to hide this section
 - `logo` determines the image that shows up
-- `title` is the main text that appears in the card
-- `company` is the secondary text in the card
-- `duration` is the tertiary text in the card
+- `title` is the main text
+- `company` is the secondary text
+- `duration` is the tertiary text
+- `background` follows the same format as the Achievements section
 
 ```yml
 experience:
   enable: true
   item:
-    - logo: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793271/logos/logos_google_id6v9a.svg
-      title: init.g
-      company: Google
-      duration: November 2019
+    - logo: https://res.cloudinary.com/samrobbins/image/upload/q_auto/v1597050679/icon_fjhqxr.png
+      title: Student Intern
+      company: Global Cyber Alliance
+      duration: July 2020 - September 2020
+      background: bg-blue-100
 ```
 
 #### hackathons
@@ -193,6 +169,35 @@ hackathons:
       description: Climate change simulator
       image: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793405/stickers/Hack_Cambridge_101_ozoq5d.png
       url: none
+```
+
+#### education
+
+This section allows you to showcase your education history, the fields are self explanatory, apart from `background` which follows the same format as the other sections that take a background property
+
+```yml
+education:
+  enable: true
+  item:
+    - title: BSc Computer Science
+      duration: 2018 - Present
+      institution: Durham University
+      image: https://res.cloudinary.com/samrobbins/image/upload/f_auto,q_auto/v1591793268/logos/logos_Durham_fc2sae.svg
+      background: bg-purple-100
+```
+
+#### skills
+
+These fields are self explanatory, enable can be used to hide this section
+
+```yml
+skills:
+  enable: true
+  item:
+    - name: Next.js
+      image: https://cdn.svgporn.com/logos/nextjs.svg
+      url: https://nextjs.org
+    - name: Tailwind CSS
 ```
 
 ### `porfolio.yml`
