@@ -1,15 +1,8 @@
-![GitHub](https://img.shields.io/github/license/samrobbins85/hugo-developer-portfolio?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/samrobbins85/tailwind-developer-website?style=for-the-badge)
 
 # Developer Portfolio
 
-![Website Image](https://res.cloudinary.com/samrobbins/image/upload/v1591885280/screenshot_aexm2m.png)
-
-## Features
-
-- Responsive Design
-- Blog Section
-- Portfolio Section
-- Homepage to show off skills
+![Website Image](https://res.cloudinary.com/samrobbins/image/upload/v1599818555/Screenshot_2020-09-11_Sam_Robbins_r5wqm6.png)
 
 ## Installation
 
@@ -31,15 +24,16 @@ The repository can then be added either by cloning or adding as a submodule
 
 ```bash
 # Cloning
-git clone https://github.com/samrobbins85/hugo-developer-portfolio hugo-developer-portfolio
+git clone https://github.com/samrobbins85/tailwind-developer-website
+tailwind-developer-website
 # Submodule
-git submodule add https://github.com/samrobbins85/hugo-developer-portfolio hugo-developer-portfolio
+git submodule add https://github.com/samrobbins85/tailwind-developer-website tailwind-developer-website
 ```
 
 In the `config.toml` file in your site directory add
 
 ```toml
-theme="hugo-developer-portfolio"
+theme="tailwind-developer-website"
 ```
 
 ### Creating a new site
@@ -62,44 +56,7 @@ In the example site, the base information looks as follows
 baseURL = "http://example.com" # The URL of your site
 languageCode = "en-gb" # The language you want to display the site in
 title = "Sam Robbins" # The title you want to appear in the address bar
-theme = "hugo-developer-portfolio" # The theme, don't change this
-```
-
-#### Plugins
-
-These are the essential plugins required to run the site, but you can add more if you need
-
-```toml
-[params.plugins]
-  # CSS Plugins
-  [[params.plugins.css]]
-  URL = "https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css"
-  # JS Plugins
-  [[params.plugins.js]]
-  URL = "https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"
-  [[params.plugins.js]]
-  URL = "https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"
-```
-
-#### Navigation
-
-This specifies the titles for the entries in the taskbar. `name` can be changed to show a different name. `URL` should not be changed in most situations as the pages will exist at the old URLs rather than the new ones, so this will result in dead links.
-
-```toml
-# navigation
-[menu]
-  [[menu.main]]
-  name = "About"
-  URL = "about"
-  [[menu.main]]
-  name = "Blog"
-  URL = "blog"
-  [[menu.main]]
-  name = "Portfolio"
-  URL = "portfolio"
-  [[menu.main]]
-  name = "Contact"
-  URL = "contact"
+theme = "tailwind-developer-website" # The theme, don't change this
 ```
 
 #### Params
@@ -112,16 +69,6 @@ home = "Home" # What you want the homepage to show up as in the menu bar
 # Meta data
 description = "The website of Sam Robbins, 2nd Year Computer Science Student at Durham University"
 author = "Sam Robbins"
-
-
-  [params.contact]
-  formAction = "https://formspree.io/<Insert code>" # Add your formspree URL here to get emails
-
-  # This contains the contact information for the footer
-  [params.footer]
-  email = "samrobbinsgb@gmail.com"
-  address = "Durham, UK"
-  googlemaps = "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJwbHYJaUqfEgRK0Ui9dVGimc&key=AIzaSyAE_4rVAKux_DSPcb_OdSRDaovtPOSk_3U"
 ```
 
 ### `homepage.yml`

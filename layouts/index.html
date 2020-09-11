@@ -13,14 +13,9 @@
       <div
         class="text-5xl lg:text-6xl font-bold leading-none tracking-tight w-1/2"
       >
-        <h1 class="inline-block">Hi! I'm</h1>
-        <h1
-          class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-teal-400 to-blue-400 inline-block"
-        >
-          {{ .Site.Data.homepage.banner.title }}
+        <h1>
+          {{ partial "main.html" . }}
         </h1>
-        <h1 class="inline-block">I study Computer Science at</h1>
-        <h1 class="text-purple-700 inline-block">Durham University</h1>
       </div>
     </div>
   </section>
@@ -44,7 +39,10 @@
 -->
   <div class="py-20 px-4">
     <section class=" container mx-auto px-2 ">
-      <div class="flex justify-center" style="--column-gap: 2rem; --row-gap: 2rem">
+      <div
+        class="flex justify-center"
+        style="--column-gap: 2rem; --row-gap: 2rem"
+      >
         {{ if .Site.Data.homepage.social.twitter }}
           <a
             href="https://twitter.com/{{ .Site.Data.homepage.social.twitter }}"
@@ -132,7 +130,10 @@
   {{ if .Site.Data.homepage.portfolio.enable }}
     <section class="py-12">
       <h2 class="text-center text-4xl font-semibold pb-4">Major Projects</h2>
-      <div class="py-10 flex flex-col" style="--column-gap: 2rem; --row-gap: 2rem">
+      <div
+        class="py-10 flex flex-col"
+        style="--column-gap: 2rem; --row-gap: 2rem"
+      >
         {{ range .Site.Data.homepage.portfolio.item }}
           <div class="flex justify-center">
             <div
@@ -151,7 +152,9 @@
                 <p class="pt-4">
                   {{ .description }}
                 </p>
-                <div class="flex flex-wrap divide-x-4  divide-transparent pt-4 pb-16">
+                <div
+                  class="flex flex-wrap divide-x-4  divide-transparent pt-4 pb-16"
+                >
                   {{ range .tools }}
                     <img class="h-10 w-20" src="{{ . }}" />
                   {{ end }}
