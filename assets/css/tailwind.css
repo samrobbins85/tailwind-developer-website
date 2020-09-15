@@ -12,6 +12,10 @@ pre {
   tab-size: 4;
 }
 
+table {
+  @apply block overflow-x-auto;
+}
+
 @tailwind utilities;
 
 .prose img {
