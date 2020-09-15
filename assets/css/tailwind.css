@@ -8,6 +8,10 @@ figcaption {
   @apply text-center;
 }
 
+pre {
+  tab-size: 4;
+}
+
 @tailwind utilities;
 
 .prose img {
