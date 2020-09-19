@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<style>
+  html {
+    height: 100vh;
+  }
+  body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+  .footer {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+</style>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+  {{- partial "head.html" . -}}
+
+  <body class="{{ .Section }}">
+    <div class="wrapper">
+      {{- block "main" . }}{{- end }}
+    </div>
+  </body>
+</html>
