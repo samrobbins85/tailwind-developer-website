@@ -9,7 +9,7 @@
     </svg> {{ .PublishDate.Format "Jan 02, 2006" }}</p>
     	<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 inline-block stroke-current text-gray-600">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg> {{ math.Round (div (countwords .Content) 220.0) }} minutes</p>
+    </svg> {{ math.Round (div (countwords .Content) 220.0) }} minute{{ if gt (math.Round (div (countwords .Content) 220.0)) 1 }}s{{ end }}</p>
     </div>
 
     <!-- Start of website/github etc -->
