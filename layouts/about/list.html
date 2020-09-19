@@ -3,10 +3,8 @@
   {{ $hexagons := resources.Get "css/hexagon.css" | minify }}
   <link rel="stylesheet" href="{{ $hexagons.Permalink | relURL }}" />
   <div class="container mx-auto px-4">
-    <section class="pt-20 text-5xl font-semibold pb-4">
-      About
-    </section>
-  
+    <section class="pt-20 text-5xl font-semibold pb-4">About</section>
+
     {{ if .Site.Data.about.experience.enable }}
       <section class="pb-12 ">
         <h2 class="text-4xl pb-10">Experience</h2>
@@ -24,10 +22,14 @@
                     />
                   </div>
                 </div>
-                <div class="col-span-5 sm:col-span-6 flex items-center">
+                <div class="col-span-5 sm:col-span-6 flex items-center pr-2">
                   <div>
                     <div class="font-medium text-xl">{{ .title }}</div>
-                    <div class="text-gray-700 uppercase text-sm tracking-wider font-medium">{{ .company }}</div>
+                    <div
+                      class="text-gray-700 uppercase text-sm tracking-wider font-medium"
+                    >
+                      {{ .company }}
+                    </div>
                   </div>
                 </div>
                 <div
@@ -41,7 +43,7 @@
         </div>
       </section>
     {{ end }}
-  
+
     {{ if .Site.Data.about.hackathons.enable }}
       <section class="py-20 ">
         <h2 class="text-4xl">Hackathons</h2>
@@ -78,8 +80,7 @@
         </div>
       </section>
     {{ end }}
-  
-    
+
     {{ if .Site.Data.about.education.enable }}
       <section class="py-20">
         <h2 class="text-4xl pb-10">Education</h2>
@@ -97,10 +98,14 @@
                     />
                   </div>
                 </div>
-                <div class="col-span-5 sm:col-span-6 flex items-center">
+                <div class="col-span-5 sm:col-span-6 flex items-center pr-2">
                   <div>
                     <div class="font-medium text-xl">{{ .title }}</div>
-                    <div class="text-gray-700 uppercase text-sm font-medium tracking-wider">{{ .institution }}</div>
+                    <div
+                      class="text-gray-700 uppercase text-sm font-medium tracking-wider"
+                    >
+                      {{ .institution }}
+                    </div>
                   </div>
                 </div>
                 <div
@@ -115,24 +120,37 @@
       </section>
     {{ end }}
 
-  {{if .Site.Data.about.skills.enable}}
-  <section class="py-10">
-    <h2 class="text-4xl">Skills</h2>
-    <h3 class="text-gray-700 text-2xl">These are the tools I love to use</h3>
-    <div class="flex flex-wrap justify-center pt-10 px-6 content-center" style="--column-gap: 4rem; --row-gap: 4rem">
-      {{range .Site.Data.about.skills.item}}
-        <a href="{{.url}}"><img src={{.image}} alt={{.name}} class="h-20 w-48 object-contain"></a>
-      {{end}}
-  
-    </div>
-    <div class="text-gray-800 text-center text-lg pt-6 divide-y-8 divide-transparent">
-      <p>and many more...</p>
-      <p>You can see how I've used these on my <a class="text-blue-600 hover:underline" href="/portfolio">portfolio page</a></p>
-    </div>
-  </section>
-  {{end}}
-
-
-
+    {{ if .Site.Data.about.skills.enable }}
+      <section class="py-10">
+        <h2 class="text-4xl">Skills</h2>
+        <h3 class="text-gray-700 text-2xl">
+          These are the tools I love to use
+        </h3>
+        <div
+          class="flex flex-wrap justify-center pt-10 px-6 content-center"
+          style="--column-gap: 4rem; --row-gap: 4rem"
+        >
+          {{ range .Site.Data.about.skills.item }}
+            <a href="{{ .url }}"
+              ><img
+                src="{{ .image }}"
+                alt="{{ .name }}"
+                class="h-20 w-48 object-contain"
+            /></a>
+          {{ end }}
+        </div>
+        <div
+          class="text-gray-800 text-center text-lg pt-6 divide-y-8 divide-transparent"
+        >
+          <p>and many more...</p>
+          <p>
+            You can see how I've used these on my
+            <a class="text-blue-600 hover:underline" href="/portfolio"
+              >portfolio page</a
+            >
+          </p>
+        </div>
+      </section>
+    {{ end }}
   </div>
 {{ end }}
