@@ -1,13 +1,22 @@
-<nav
-  class="fixed h-16 p-4 bg-white border-b border-gray-200 w-full z-20"
->
-  <div class="flex divide-x-4 divide-transparent pr-6 text-lg items-center text-gray-700 ">
- {{ $currentPage := . }}
-    <a href="/" class="{{if .IsHome}}text-gray-800 font-semibold{{else}}font-normal{{end}}" >Home</a>
+<nav class="fixed h-16 p-4 bg-white border-b border-gray-200 w-full z-20">
+  <div
+    class="flex divide-x-4 divide-transparent pr-6 text-lg items-center text-gray-700 "
+  >
+    {{ $currentPage := . }}
+    <a
+      href="/"
+      class="{{ if .IsHome }}text-gray-800 font-semibold{{ else }}font-normal{{ end }}"
+      >Home</a
+    >
     {{ range .Site.Menus.main }}
-    <a class="{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} text-gray-800 font-semibold{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+      <a
+        class="{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} text-gray-800 font-semibold{{ end }}"
+        href="{{ .URL }}"
+        title="{{ .Title }}"
+        >{{ .Name }}</a
+      >
     {{ end }}
-
+    <a class="text-gray-800" href="https://cv.samrobbins.uk">CV</a>
   </div>
 </nav>
 
