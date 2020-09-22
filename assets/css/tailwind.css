@@ -25,7 +25,7 @@
     @apply block overflow-x-auto;
   }
   .prose img {
-    @apply shadow-lg mx-auto;
+    @apply shadow-lg mx-auto p-2;
   }
 
   .flex > * {
