@@ -4,24 +4,32 @@
 
 @tailwind components;
 
-figcaption {
-  @apply text-center;
-}
-
-pre {
-  tab-size: 4;
-}
-
-table {
-  @apply block overflow-x-auto;
-}
-
 @tailwind utilities;
 
-.prose img {
-  @apply shadow-lg;
-}
+@layer base {
+  figcaption {
+    @apply text-center;
+  }
 
-.flex > * {
-  margin: calc(var(--row-gap) / 2) calc(var(--column-gap) / 2);
+  pre {
+    tab-size: 4;
+  }
+
+  table {
+    @apply block overflow-x-auto;
+  }
+  .prose img {
+    @apply shadow-lg;
+  }
+
+  .flex > * {
+    margin: calc(var(--row-gap) / 2) calc(var(--column-gap) / 2);
+  }
+
+  :target::before {
+    content: "";
+    display: block;
+    height: 4rem; /* fixed header height*/
+    margin: -4rem 0 0; /* negative fixed header height */
+  }
 }
