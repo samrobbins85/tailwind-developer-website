@@ -19,17 +19,16 @@
     @apply block overflow-x-auto;
   }
   .prose img {
-    @apply shadow-lg;
+    @apply shadow-lg mx-auto;
   }
 
   .flex > * {
     margin: calc(var(--row-gap) / 2) calc(var(--column-gap) / 2);
   }
 
-  :target::before {
-    content: "";
-    display: block;
-    height: 4rem; /* fixed header height*/
-    margin: -4rem 0 0; /* negative fixed header height */
+  .katex-display {
+    @apply overflow-x-auto;
+    @apply overflow-y-hidden;
+    @apply py-4;
   }
 }
