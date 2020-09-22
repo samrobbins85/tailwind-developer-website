@@ -4,6 +4,12 @@
 
 @tailwind components;
 
+.katex-display {
+  @apply overflow-x-auto;
+  @apply overflow-y-hidden;
+  @apply py-4;
+}
+
 @tailwind utilities;
 
 @layer base {
