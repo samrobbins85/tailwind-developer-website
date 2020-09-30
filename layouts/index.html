@@ -142,6 +142,7 @@
               <img
                 class="rounded border-r border-gray-300 object-cover"
                 src="{{ .image }}"
+                alt="{{ .description }}"
                 loading="lazy"
               />
               <hr class="lg:hidden" />
@@ -157,7 +158,12 @@
                   class="flex flex-wrap divide-x-4  divide-transparent pt-4 pb-16"
                 >
                   {{ range .tools }}
-                    <img class="h-10 w-20" src="{{ . }}" loading="lazy" />
+                    <img
+                      class="h-10 w-20"
+                      src="{{ .image }}"
+                      alt="{{ .name }}"
+                      loading="lazy"
+                    />
                   {{ end }}
                 </div>
                 <div class="flex absolute bottom-0 right-0 mt-4 pt-4">
@@ -189,6 +195,7 @@
                   <img
                     class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
                     src="{{ .image }}"
+                    alt="{{ .title }}"
                     loading="lazy"
                   />
                 </div>
