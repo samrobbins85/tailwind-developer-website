@@ -5,6 +5,19 @@
   <div class="container mx-auto px-4">
     <section class="pt-20 text-5xl font-semibold pb-4">About</section>
 
+    {{ if .Site.Data.about.cv.enable }}
+      <div>
+        <h3 class="text-center text-xl italic">
+          To see my full CV please go
+          <a
+            class="text-blue-600 hover:underline"
+            href="{{ .Site.Data.about.cv.link }}"
+            >here</a
+          >
+        </h3>
+      </div>
+    {{ end }}
+
     {{ if .Site.Data.about.experience.enable }}
       <section class="pb-12 ">
         <h2 class="text-4xl pb-10">Experience</h2>
