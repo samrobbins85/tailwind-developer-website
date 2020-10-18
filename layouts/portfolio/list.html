@@ -8,9 +8,12 @@
   </section>
 
   <div x-data="{ tab: 'all' }">
-    <div class="flex justify-center flex-wrap text-gray-500 py-4 px-2" style="--column-gap: 2rem; --row-gap: 2rem">
+    <div
+      class="flex justify-center flex-wrap text-gray-500 py-4 px-2"
+      style="--column-gap: 2rem; --row-gap: 2rem"
+    >
       <button
-        :class="{ 'text-teal-600': tab === 'all' }"
+        :class="{ 'text-teal-700': tab === 'all' }"
         @click="tab = 'all'"
         class="font-semibold"
       >
@@ -18,7 +21,7 @@
       </button>
       {{ range .Site.Data.portfolio.filter }}
         <button
-          :class="{ 'text-teal-600': tab === '{{ .value }}' }"
+          :class="{ 'text-teal-700': tab === '{{ .value }}' }"
           class="font-semibold"
           @click="tab = '{{ .value }}'"
         >
@@ -27,7 +30,8 @@
       {{ end }}
     </div>
     <div
-      class="flex flex-wrap container mx-auto justify-center py-4 px-4" style="--row-gap: 2rem; --column-gap:2rem"
+      class="flex flex-wrap container mx-auto justify-center py-4 px-4"
+      style="--row-gap: 2rem; --column-gap:2rem"
     >
       {{ range .Data.Pages }}
         <a
