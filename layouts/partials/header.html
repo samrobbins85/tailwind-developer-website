@@ -1,16 +1,18 @@
-<nav class="fixed h-16 p-4 bg-white border-b border-gray-200 w-full z-20">
+<nav
+  class="fixed h-16 p-4 bg-white border-b border-gray-200 dark:border-gray-700 w-full z-20 dark:bg-cool-gray-900"
+>
   <div
-    class="flex divide-x-4 divide-transparent pr-6 text-lg items-center text-gray-700 "
+    class="flex divide-x-4 divide-transparent pr-6 text-lg items-center text-gray-700 dark:text-white"
   >
     {{ $currentPage := . }}
     <a
       href="/"
-      class="{{ if .IsHome }}text-gray-800 font-semibold{{ else }}font-normal{{ end }}"
+      class="{{ if .IsHome }}text-gray-800 dark:text-white font-semibold{{ else }}font-normal{{ end }}"
       >Home</a
     >
     {{ range .Site.Menus.main }}
       <a
-        class="{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} text-gray-800 font-semibold{{ end }}"
+        class="{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} text-gray-800 font-semibold dark:text-white{{ end }}"
         href="{{ .URL }}"
         title="{{ .Title }}"
         >{{ .Name }}</a
