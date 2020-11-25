@@ -6,7 +6,9 @@
     <section class="pt-20 text-5xl font-semibold pb-4">About</section>
 
     {{ if .Site.Data.about.cv.enable }}
-      <div>
+      <div
+        class="py-6 border border-gray-300 rounded max-w-sm mx-auto px-2 my-4"
+      >
         <h3 class="text-center text-xl italic">
           To see my full CV please go
           <a
@@ -20,7 +22,7 @@
 
     {{ if .Site.Data.about.experience.enable }}
       <section class="pb-12 ">
-        <h2 class="text-4xl pb-10">Experience</h2>
+        <h2 class="text-3xl pb-10">Experience</h2>
         <div class="flex justify-center">
           <div class="xl:w-1/2 flex flex-col gap-10">
             {{ range .Site.Data.about.experience.item }}
@@ -59,7 +61,7 @@
 
     {{ if .Site.Data.about.hackathons.enable }}
       <section class="py-20 ">
-        <h2 class="text-4xl">Hackathons</h2>
+        <h2 class="text-3xl">Hackathons</h2>
         <div class="lg:w-3/4 text-center mx-auto pt-16 px-4">
           <ul id="hexGrid">
             {{ range .Site.Data.about.hackathons.item }}
@@ -96,7 +98,7 @@
 
     {{ if .Site.Data.about.education.enable }}
       <section class="py-20">
-        <h2 class="text-4xl pb-10">Education</h2>
+        <h2 class="text-3xl pb-10">Education</h2>
         <div class="flex justify-center">
           <div class="xl:w-1/2 flex flex-col gap-10">
             {{ range .Site.Data.about.education.item }}
@@ -135,10 +137,8 @@
 
     {{ if .Site.Data.about.skills.enable }}
       <section class="py-10">
-        <h2 class="text-4xl">Skills</h2>
-        <h3 class="text-gray-700 text-2xl">
-          These are the tools I love to use
-        </h3>
+        <h2 class="text-3xl">Skills</h2>
+        <h3 class="text-gray-700 text-xl">These are the tools I love to use</h3>
         <div
           class="flex flex-wrap justify-center pt-10 px-6 content-center"
           style="--column-gap: 4rem; --row-gap: 4rem"

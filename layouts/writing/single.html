@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="pt-20 px-4">
+  <div class="container mx-auto">
+    <h1 class="sm:text-4xl text-2xl text-center font-semibold">{{.Title}}</h1>
+    <div class="py-4 text-gray-600">
+    	<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 inline-block stroke-current text-gray-600">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg> {{ .PublishDate.Format "Jan 02, 2006" }}</p>
+    	<p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 inline-block stroke-current text-gray-600">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg> {{ math.Round (div (countwords .Content) 220.0) }} minute{{ if gt (math.Round (div (countwords .Content) 220.0)) 1 }}s{{ end }}</p>
+    </div>
+
+
+    <hr class="my-4">
+   
+
+    
+  </div>
+  
+  </div>
+  
+</section>
+<div class="container prose mx-auto w-screen px-4 pb-6">
+      {{.Content }}
+</div>
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+    integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X"
+    crossorigin="anonymous"
+  />
+
+
+
+{{end}}
