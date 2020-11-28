@@ -10,14 +10,18 @@
         <div class="p-4">
           <div>
             <a href="{{ .Permalink | relURL }}"
-              ><h2 class="font-semibold text-xl text-blue-700">
+              ><h2 class="font-semibold text-xl sm:text-2xl text-blue-700">
                 {{ .Title }}
               </h2></a
             >
-            <time class="text-gray-600 text-sm uppercase" datetime="{{ .Date }}"
-              >{{ .Date.Format "Jan 2, 2006" }}</time
-            >
-            <p>{{ .Params.description }}</p>
+            <div class="py-1">
+              <time
+                class="text-gray-600 text-sm uppercase"
+                datetime="{{ .Date }}"
+                >{{ .Date.Format "Jan 2, 2006" }}</time
+              >
+            </div>
+            <p class="sm:text-lg">{{ .Params.description }}</p>
           </div>
         </div>
       {{ end }}
