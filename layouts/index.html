@@ -68,9 +68,18 @@
         {{ if .Site.Data.homepage.social.gitlab }}
           <a href="https://gitlab.com/{{ .Site.Data.homepage.social.gitlab }}">
             <img
-              class="object-contain"
+              class="h-12 object-contain"
               src="https://cdn.svgporn.com/logos/gitlab.svg"
               alt="GitLab"
+              loading="lazy"
+          /></a>
+        {{ end }}
+        {{ if .Site.Data.homepage.social.npm }}
+          <a href="https://www.npmjs.com/~{{ .Site.Data.homepage.social.npm }}">
+            <img
+              class="h-12 object-contain"
+              src="https://cdn.svgporn.com/logos/npm.svg"
+              alt="npm"
               loading="lazy"
           /></a>
         {{ end }}
