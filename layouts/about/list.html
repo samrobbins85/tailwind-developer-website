@@ -31,10 +31,22 @@
                   <div
                     class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center {{ .background }} border-none"
                   >
-                    <img
-                      class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
-                      src="{{ .logo }}"
-                    />
+                    {{ if .fallback }}
+                      <picture
+                        class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
+                      >
+                        <source srcset="{{ .logo }}" type="image/webp" />
+                        <source srcset="{{ .fallback }}" type="image/png" />
+                        <img src="{{ .fallback }}" alt="{{ .company }}" />
+                      </picture>
+                      {{ else }}
+                      <img
+                        class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
+                        src="{{ .logo }}"
+                        alt="{{ .company }}"
+                        loading="lazy"
+                      />
+                    {{ end }}
                   </div>
                 </div>
                 <div class="col-span-5 sm:col-span-6 flex items-center pr-2">
