@@ -43,44 +43,21 @@
         class="flex justify-center"
         style="--column-gap: 2rem; --row-gap: 2rem"
       >
-        {{ if .Site.Data.homepage.social.twitter }}
-          <a
-            href="https://twitter.com/{{ .Site.Data.homepage.social.twitter }}"
-            class="inline-block"
-          >
-            <img
-              class="h-12 object-contain"
-              src="https://cdn.svgporn.com/logos/twitter.svg"
-              alt="Twitter"
-              loading="lazy"
-          /></a>
-        {{ end }}
         {{ if .Site.Data.homepage.social.github }}
           <a href="https://github.com/{{ .Site.Data.homepage.social.github }}">
             <img
               class="h-12 object-contain"
-              src="https://cdn.svgporn.com/logos/github-icon.svg"
+              src="/img/social/github.svg"
               alt="GitHub"
-              loading="lazy"
             />
           </a>
-        {{ end }}
-        {{ if .Site.Data.homepage.social.gitlab }}
-          <a href="https://gitlab.com/{{ .Site.Data.homepage.social.gitlab }}">
-            <img
-              class="h-12 object-contain"
-              src="https://cdn.svgporn.com/logos/gitlab.svg"
-              alt="GitLab"
-              loading="lazy"
-          /></a>
         {{ end }}
         {{ if .Site.Data.homepage.social.npm }}
           <a href="https://www.npmjs.com/~{{ .Site.Data.homepage.social.npm }}">
             <img
               class="h-12 object-contain"
-              src="https://cdn.svgporn.com/logos/npm.svg"
+              src="/img/social/npm.svg"
               alt="npm"
-              loading="lazy"
           /></a>
         {{ end }}
         {{ if .Site.Data.homepage.social.linkedin }}
@@ -90,35 +67,10 @@
           >
             <img
               class="h-12 object-contain"
-              src="https://cdn.svgporn.com/logos/linkedin.svg"
+              src="/img/social/linkedin.svg"
               alt="LinkedIn"
-              loading="lazy"
             />
           </a>
-        {{ end }}
-        {{ if .Site.Data.homepage.social.facebook }}
-          ><a
-            href="https://www.facebook.com/{{ .Site.Data.homepage.social.facebook }}"
-            class="inline-block"
-          >
-            <img
-              class="h-12 object-contain"
-              src="https://cdn.svgporn.com/logos/facebook.svg"
-              alt="Facebook"
-              loading="lazy"
-          /></a>
-        {{ end }}
-        {{ if .Site.Data.homepage.social.instagram }}
-          <a
-            href="https://instagram.com/{{ .Site.Data.homepage.social.instagram }}"
-            class="inline-block"
-          >
-            <img
-              class="h-12 object-contain"
-              src="https://cdn.svgporn.com/logos/instagram-icon.svg"
-              alt="Instagram"
-              loading="lazy"
-          /></a>
         {{ end }}
         {{ if .Site.Data.homepage.social.gmail }}
           <a
@@ -127,9 +79,8 @@
           >
             <img
               class="h-12 object-contain"
-              src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg"
+              src="/img/social/gmail.svg"
               alt="Gmail"
-              loading="lazy"
           /></a>
         {{ end }}
       </div>
@@ -201,12 +152,26 @@
                 <div
                   class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center {{ .background }} border-none"
                 >
-                  <img
-                    class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
-                    src="{{ .image }}"
-                    alt="{{ .event }}"
-                    loading="lazy"
-                  />
+                  {{ if .fallback }}
+                    <picture
+                      class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
+                    >
+                      <source srcset="{{ .image }}" type="image/webp" />
+                      <source srcset="{{ .fallback }}" type="image/png" />
+                      <img
+                        class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
+                        src="{{ .fallback }}"
+                        alt="{{ .event }}"
+                      />
+                    </picture>
+                    {{ else }}
+                    <img
+                      class="h-10 w-10 sm:h-16 sm:w-16 object-contain self-center"
+                      src="{{ .image }}"
+                      alt="{{ .event }}"
+                      loading="lazy"
+                    />
+                  {{ end }}
                 </div>
               </div>
               <div class="col-span-5 sm:col-span-6 flex items-center pr-2">
